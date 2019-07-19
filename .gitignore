@@ -1,0 +1,17 @@
+# Android Studio
+.idea
+.gradle
+/*/.gitignore
+/*/local.properties
+local.properties
+/*/out
+/out
+/*/*/build
+/*/build
+build
+*.iml
+*.iws
+*.ipr
+*~
+*.swp
+.DS_*
