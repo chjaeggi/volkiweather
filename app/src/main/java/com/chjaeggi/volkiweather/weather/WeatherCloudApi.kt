@@ -1,7 +1,6 @@
 package com.chjaeggi.volkiweather.weather
 
 
-import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -9,8 +8,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface WeatherCloudApi {
-
-    // https://api.openweathermap.org/data/2.5/weather?q=volketswil&appid=886705b4c1182eb1c69f28eb8c520e20
 
     companion object {
         private const val BASE_URL = "https://api.openweathermap.org/"

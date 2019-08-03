@@ -1,6 +1,5 @@
 package com.chjaeggi.volkiweather
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.chjaeggi.volkiweather.util.AppRxSchedulers
 import com.chjaeggi.volkiweather.util.RxAwareViewModel
@@ -8,8 +7,8 @@ import com.chjaeggi.volkiweather.util.plusAssign
 import com.chjaeggi.volkiweather.weather.WeatherDataSource
 import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
-import java.text.DateFormat
-import java.util.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class MainViewModel(
     private val schedulers: AppRxSchedulers,
@@ -20,6 +19,12 @@ class MainViewModel(
     private val _dateTime = MutableLiveData<String>()
     val dateTime = _dateTime
 
+    private val _currentWeatherDescription = MutableLiveData<String>()
+    val currentWeatherDescription = _currentWeatherDescription
+
+    private val _currentWeatherTemperature = MutableLiveData<String>()
+    val currentWeatherTemperature = _currentWeatherTemperature
+
     fun requestWeatherData() {
         disposables += data
             .getWeatherData()
@@ -27,7 +32,10 @@ class MainViewModel(
             .observeOn(schedulers.main)
             .subscribeBy(
                 onNext = {
-                    dateTime.value = "${DateFormat.getDateTimeInstance().format(Date())}\n\n$it"
+                    dateTime.value = LocalDateTime.now()
+                        .format(DateTimeFormatter.ofPattern("dd.MM.yyyy\nHH:mm"))
+                    currentWeatherDescription.value = it.description
+                    currentWeatherTemperature.value = "${it.temperatureCurrent} °C"
                 },
                 onError = {
                     Timber.d(it)

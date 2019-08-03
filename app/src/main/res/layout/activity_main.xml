@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -10,20 +11,72 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background"
         tools:context=".MainActivity">
 
-        <TextView
+        <ImageView
+            android:id="@+id/current_weather_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{model.dateTime}"
-            android:textSize="48sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_fog" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="end"
+            android:text="@{model.dateTime}"
+            android:textColor="@color/textColorDark"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Jul 23, 2019\n11:21" />
+
+        <TextView
+            android:id="@+id/weather_description2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:text="@{model.currentWeatherDescription}"
+            android:textAlignment="center"
+            android:textColor="@color/textColor"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/current_weather_icon"
+            app:layout_constraintEnd_toEndOf="@+id/current_weather_icon"
+            app:layout_constraintStart_toStartOf="@+id/current_weather_icon"
+            tools:text="Cloudy" />
+
+        <TextView
+            android:id="@+id/weather_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:text="@{model.currentWeatherTemperature}"
+            android:textAlignment="center"
+            android:textColor="@color/textColor"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="@+id/current_weather_icon"
+            app:layout_constraintStart_toStartOf="@+id/current_weather_icon"
+            app:layout_constraintTop_toBottomOf="@+id/current_weather_icon"
+            tools:text="23.5 °C" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
