@@ -27,14 +27,26 @@ class MainViewModel(
     private val _currentWeatherDescription = MutableLiveData<String>()
     val currentWeatherDescription = _currentWeatherDescription
 
-    private val _currentWeatherTemperature = MutableLiveData<String>()
-    val currentWeatherTemperature = _currentWeatherTemperature
+    private val _currentOutdoorTemperature = MutableLiveData<String>()
+    val currentOutdoorTemperature = _currentOutdoorTemperature
+
+    private val _currentOutdoorHumidity = MutableLiveData<String>()
+    val currentOutdoorHumidity = _currentOutdoorHumidity
+
+    private val _currentOutdoorWind = MutableLiveData<String>()
+    val currentOutdoorWind = _currentOutdoorWind
+
+    private val _currentClouds = MutableLiveData<String>()
+    val currentClouds = _currentClouds
 
     private val _currentIndoorTemperature = MutableLiveData<String>()
     val currentIndoorTemperature = _currentIndoorTemperature
 
     private val _currentIndoorHumidity = MutableLiveData<String>()
     val currentIndoorHumidity = _currentIndoorHumidity
+
+    private val _weatherIcon = MutableLiveData<Int>()
+    val weatherIcon = _weatherIcon
 
     private var _lowPassTemperature = 0.0f
     private var _lowPassHumidity = 0.0f
@@ -48,10 +60,15 @@ class MainViewModel(
             .observeOn(schedulers.main)
             .subscribeBy(
                 onNext = {
-                    dateTime.value = LocalDateTime.now()
-                        .format(DateTimeFormatter.ofPattern("dd.MM.yyyy\nHH:mm"))
-                    currentWeatherDescription.value = it.description
-                    currentWeatherTemperature.value = "${it.temperatureCurrent} °C"
+                    _dateTime.value = LocalDateTime.now()
+                        .format(DateTimeFormatter.ofPattern("dd.MM.yyyy, HH:mm"))
+                    _currentWeatherDescription.value = it.description.capitalize()
+                    _currentOutdoorTemperature.value =
+                        String.format("%.1f °C", it.temperatureCurrent)
+                    _currentClouds.value = String.format("%.1f %%", it.clouds)
+                    _currentOutdoorWind.value = String.format("%.1f km/h", it.wind * 3.6)
+                    _currentOutdoorHumidity.value = String.format("%.1f %%", it.humidity)
+                    _weatherIcon.value = R.drawable.ic_clear_night
                 },
                 onError = {
                     Timber.d(it)
@@ -72,7 +89,7 @@ class MainViewModel(
     private val _temperatureListener = object : SensorEventListener {
         override fun onSensorChanged(event: SensorEvent) {
             _lowPassTemperature += (event.values[0] - _lowPassTemperature) / _temperatureSmoothing
-            _currentIndoorTemperature.value = String.format("%.1f °C", _lowPassTemperature)
+            _currentIndoorTemperature.value = String.format("%.1f", _lowPassTemperature)
         }
 
         override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
@@ -84,7 +101,7 @@ class MainViewModel(
     private val _humidityListener = object : SensorEventListener {
         override fun onSensorChanged(event: SensorEvent) {
             _lowPassHumidity += (event.values[0] - _lowPassHumidity) / _humiditySmoothing
-            _currentIndoorHumidity.value = String.format("%.1f %%", _lowPassHumidity)
+            _currentIndoorHumidity.value = String.format("%.1f", _lowPassHumidity)
         }
 
         override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {

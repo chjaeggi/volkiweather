@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -21,13 +21,13 @@
             android:id="@+id/current_weather_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="128dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:src="@{model.weatherIcon}"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_fog" />
+            app:layout_constraintVertical_bias="0.39999998" />
 
         <TextView
             android:id="@+id/time"
@@ -58,31 +58,34 @@
             app:layout_constraintBottom_toTopOf="@+id/current_weather_icon"
             app:layout_constraintEnd_toEndOf="@+id/current_weather_icon"
             app:layout_constraintStart_toStartOf="@+id/current_weather_icon"
-            tools:text="Cloudy" />
+            tools:text="Light Clouds" />
 
         <TextView
             android:id="@+id/weather_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
-            android:text="@{model.currentWeatherTemperature}"
+            android:text="@{model.currentOutdoorTemperature}"
             android:textAlignment="center"
             android:textColor="@color/textColor"
             android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="@+id/indoor_temperature"
             app:layout_constraintEnd_toEndOf="@+id/current_weather_icon"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/current_weather_icon"
-            app:layout_constraintTop_toBottomOf="@+id/current_weather_icon"
+            app:layout_constraintTop_toTopOf="@+id/indoor_temperature"
+            app:layout_constraintVertical_bias="0.0"
             tools:text="23.5 °C" />
 
         <ImageView
             android:id="@+id/house_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="128dp"
             app:layout_constraintBottom_toBottomOf="@+id/current_weather_icon"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/current_weather_icon"
             app:srcCompat="@drawable/ic_house" />
 
@@ -91,16 +94,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/montserrat"
-            android:gravity="center"
+            android:gravity="end"
             android:text="@{model.currentIndoorTemperature}"
-            android:textAlignment="textEnd"
             android:textColor="@color/textColor"
             android:textSize="36sp"
-            app:layout_constraintEnd_toEndOf="@+id/house_icon"
-            app:layout_constraintStart_toStartOf="@+id/house_icon"
+            app:layout_constraintEnd_toStartOf="@+id/indoor_temperature_unit"
             app:layout_constraintTop_toBottomOf="@+id/house_icon"
-            tools:text="23.5 °C" />
+            tools:text="23.5" />
+
+        <TextView
+            android:id="@+id/indoor_temperature_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:gravity="start"
+            android:text="°C"
+            android:textColor="@color/textColor"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="@+id/thermometer_icon"
+            app:layout_constraintStart_toEndOf="@+id/house_icon"
+            app:layout_constraintTop_toTopOf="@+id/thermometer_icon" />
 
         <TextView
             android:id="@+id/indoor_humidity"
@@ -108,15 +123,131 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat"
-            android:gravity="center"
+            android:gravity="end"
             android:text="@{model.currentIndoorHumidity}"
-            android:textAlignment="textEnd"
             android:textColor="@color/textColor"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="@+id/house_icon"
             app:layout_constraintStart_toStartOf="@+id/house_icon"
             app:layout_constraintTop_toBottomOf="@+id/indoor_temperature"
-            tools:text="23.5 °C" />
+            tools:text="26.1" />
+
+        <TextView
+            android:id="@+id/indoor_humidity_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:gravity="start"
+            android:text="%"
+            android:textColor="@color/textColor"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="@+id/humidity_icon"
+            app:layout_constraintStart_toEndOf="@+id/house_icon"
+            app:layout_constraintTop_toTopOf="@+id/humidity_icon" />
+
+        <ImageView
+            android:id="@+id/thermometer_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/indoor_temperature"
+            app:layout_constraintEnd_toStartOf="@+id/house_icon"
+            app:layout_constraintTop_toTopOf="@+id/indoor_temperature"
+            app:srcCompat="@drawable/ic_thermometer" />
+
+        <ImageView
+            android:id="@+id/humidity_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/indoor_humidity"
+            app:layout_constraintEnd_toStartOf="@+id/house_icon"
+            app:layout_constraintTop_toTopOf="@+id/indoor_humidity"
+            app:srcCompat="@drawable/ic_humidity" />
+
+        <TextView
+            android:id="@+id/outdoor_clouds_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Clouds:"
+            android:textColor="@color/textColorDark"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/clouds"
+            app:layout_constraintEnd_toEndOf="@+id/helperView"
+            app:layout_constraintTop_toTopOf="@+id/clouds" />
+
+        <TextView
+            android:id="@+id/outdoor_wind_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Wind:"
+            android:textColor="@color/textColorDark"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="@+id/helperView"
+            app:layout_constraintTop_toBottomOf="@+id/outdoor_clouds_text" />
+
+        <TextView
+            android:id="@+id/outdoor_humidity_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Humidity:"
+            android:textColor="@color/textColorDark"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/outdoor_clouds_text"
+            app:layout_constraintEnd_toEndOf="@+id/helperView" />
+
+        <TextView
+            android:id="@+id/outdoor_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@{model.currentOutdoorHumidity}"
+            android:textColor="@color/textColor"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/clouds"
+            app:layout_constraintStart_toEndOf="@+id/outdoor_humidity_text"
+            tools:text="45 %" />
+
+        <TextView
+            android:id="@+id/clouds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@{model.currentClouds}"
+            android:textColor="@color/textColor"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/humidity_icon"
+            app:layout_constraintStart_toEndOf="@+id/outdoor_clouds_text"
+            app:layout_constraintTop_toTopOf="@+id/humidity_icon"
+            tools:text="40 %" />
+
+        <TextView
+            android:id="@+id/outdoor_wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@{model.currentOutdoorWind}"
+            android:textColor="@color/textColor"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@+id/outdoor_wind_text"
+            app:layout_constraintTop_toBottomOf="@+id/clouds"
+            tools:text="12 km/h" />
+
+        <View
+            android:id="@+id/helperView"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/current_weather_icon"
+            app:layout_constraintStart_toStartOf="@+id/current_weather_icon"
+            app:layout_constraintTop_toBottomOf="@+id/weather_temperature" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
