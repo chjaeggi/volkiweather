@@ -22,4 +22,8 @@ class WeatherRepository(
             }
     }
 
+    private fun getIconFromId(id: Int) {
+
+    }
+
 }

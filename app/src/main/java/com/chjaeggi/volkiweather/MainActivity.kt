@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import com.chjaeggi.volkiweather.databinding.ActivityMainBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
             intentFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION)
             registerReceiver(broadCastReceiver, intentFilter)
         }
+
+        viewModel.startIndoorSensing()
     }
 
     private fun wifiAvailable(): Boolean {
