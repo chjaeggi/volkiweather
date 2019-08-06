@@ -21,13 +21,13 @@ class WeatherRepository(
                             wind = it.wind.speed.toFloat(),
                             humidity = it.main.humidity.toFloat(),
                             clouds = it.clouds.all.toFloat(),
-                            icon = convertWeatherIdToImgResource(it.id)
+                            icon = weatherToImageResource(it.id)
                         )
                     }
             }
     }
 
-    private fun convertWeatherIdToImgResource(id: Int): Int {
+    private fun weatherToImageResource(id: Int): Int {
         return when (id) {
             800 -> R.drawable.ic_clear_day
             else -> R.drawable.ic_clear_night
