@@ -21,8 +21,6 @@
             android:id="@+id/current_weather_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleX="0.7"
-            android:scaleY="0.7"
             android:src="@{model.weatherIcon}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +39,7 @@
             android:gravity="end"
             android:text="@{model.dateTime}"
             android:textColor="@color/textColorDark"
-            android:textSize="10sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Jul 23, 2019\n11:21" />
@@ -50,13 +48,13 @@
             android:id="@+id/weather_description2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="24dp"
             android:fontFamily="@font/montserrat_bold"
             android:gravity="center"
             android:text="@{model.currentWeatherDescription}"
             android:textAlignment="center"
             android:textColor="@color/textColor"
-            android:textSize="16sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/current_weather_icon"
             app:layout_constraintEnd_toEndOf="@+id/current_weather_icon"
             app:layout_constraintStart_toStartOf="@+id/current_weather_icon"
@@ -71,7 +69,7 @@
             android:text="@{model.currentOutdoorTemperature}"
             android:textAlignment="center"
             android:textColor="@color/textColor"
-            android:textSize="24sp"
+            android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="@+id/indoor_temperature"
             app:layout_constraintEnd_toEndOf="@+id/current_weather_icon"
             app:layout_constraintHorizontal_bias="1.0"
@@ -84,8 +82,6 @@
             android:id="@+id/house_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleX="0.7"
-            android:scaleY="0.7"
             app:layout_constraintBottom_toBottomOf="@+id/current_weather_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.75"
@@ -97,16 +93,14 @@
             android:id="@+id/indoor_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="48dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/montserrat"
             android:gravity="end"
             android:text="@{model.currentIndoorTemperature}"
             android:textColor="@color/textColor"
-            android:textSize="24sp"
+            android:textSize="36sp"
             app:layout_constraintEnd_toStartOf="@+id/indoor_temperature_unit"
-            app:layout_constraintStart_toEndOf="@+id/thermometer_icon"
             app:layout_constraintTop_toBottomOf="@+id/house_icon"
             tools:text="23.5" />
 
@@ -118,7 +112,7 @@
             android:gravity="start"
             android:text="°C"
             android:textColor="@color/textColor"
-            android:textSize="24sp"
+            android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="@+id/thermometer_icon"
             app:layout_constraintStart_toEndOf="@+id/house_icon"
             app:layout_constraintTop_toTopOf="@+id/thermometer_icon" />
@@ -127,16 +121,14 @@
             android:id="@+id/indoor_humidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat"
             android:gravity="end"
             android:text="@{model.currentIndoorHumidity}"
             android:textColor="@color/textColor"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/indoor_humidity_unit"
-            app:layout_constraintStart_toEndOf="@+id/humidity_icon"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="@+id/house_icon"
+            app:layout_constraintStart_toStartOf="@+id/house_icon"
             app:layout_constraintTop_toBottomOf="@+id/indoor_temperature"
             tools:text="26.1" />
 
@@ -148,7 +140,7 @@
             android:gravity="start"
             android:text="%"
             android:textColor="@color/textColor"
-            android:textSize="24sp"
+            android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="@+id/humidity_icon"
             app:layout_constraintStart_toEndOf="@+id/house_icon"
             app:layout_constraintTop_toTopOf="@+id/humidity_icon" />
@@ -157,24 +149,20 @@
             android:id="@+id/thermometer_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleX="0.7"
-            android:scaleY="0.7"
+            android:layout_marginEnd="48dp"
             app:layout_constraintBottom_toBottomOf="@+id/indoor_temperature"
             app:layout_constraintEnd_toStartOf="@+id/house_icon"
             app:layout_constraintTop_toTopOf="@+id/indoor_temperature"
-            app:layout_constraintVertical_bias="0.47"
             app:srcCompat="@drawable/ic_thermometer" />
 
         <ImageView
             android:id="@+id/humidity_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleX="0.7"
-            android:scaleY="0.7"
+            android:layout_marginEnd="48dp"
             app:layout_constraintBottom_toBottomOf="@+id/indoor_humidity"
             app:layout_constraintEnd_toStartOf="@+id/house_icon"
             app:layout_constraintTop_toTopOf="@+id/indoor_humidity"
-            app:layout_constraintVertical_bias="0.714"
             app:srcCompat="@drawable/ic_humidity" />
 
         <TextView
@@ -184,9 +172,10 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="Clouds:"
             android:textColor="@color/textColorDark"
-            android:textSize="10sp"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/clouds"
             app:layout_constraintEnd_toEndOf="@+id/helperView"
-            app:layout_constraintTop_toBottomOf="@+id/outdoor_humidity_text" />
+            app:layout_constraintTop_toTopOf="@+id/clouds" />
 
         <TextView
             android:id="@+id/outdoor_wind_text"
@@ -195,8 +184,8 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="Wind:"
             android:textColor="@color/textColorDark"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="@+id/outdoor_clouds_text"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="@+id/helperView"
             app:layout_constraintTop_toBottomOf="@+id/outdoor_clouds_text" />
 
         <TextView
@@ -206,9 +195,9 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="Humidity:"
             android:textColor="@color/textColorDark"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="@+id/helperView"
-            app:layout_constraintTop_toTopOf="@+id/humidity_icon" />
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/outdoor_clouds_text"
+            app:layout_constraintEnd_toEndOf="@+id/helperView" />
 
         <TextView
             android:id="@+id/outdoor_humidity"
@@ -218,7 +207,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@{model.currentOutdoorHumidity}"
             android:textColor="@color/textColor"
-            android:textSize="10sp"
+            android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="@+id/outdoor_humidity_text"
             app:layout_constraintStart_toEndOf="@+id/outdoor_humidity_text"
             app:layout_constraintTop_toTopOf="@+id/outdoor_humidity_text"
@@ -229,13 +218,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@{model.currentClouds}"
             android:textColor="@color/textColor"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="@+id/outdoor_clouds_text"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/humidity_icon"
             app:layout_constraintStart_toEndOf="@+id/outdoor_clouds_text"
-            app:layout_constraintTop_toTopOf="@+id/outdoor_clouds_text"
+            app:layout_constraintTop_toTopOf="@+id/humidity_icon"
             tools:text="40 %" />
 
         <TextView
@@ -246,10 +236,9 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@{model.currentOutdoorWind}"
             android:textColor="@color/textColor"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="@+id/outdoor_wind_text"
+            android:textSize="17sp"
             app:layout_constraintStart_toEndOf="@+id/outdoor_wind_text"
-            app:layout_constraintTop_toTopOf="@+id/outdoor_wind_text"
+            app:layout_constraintTop_toBottomOf="@+id/clouds"
             tools:text="12 km/h" />
 
         <View
