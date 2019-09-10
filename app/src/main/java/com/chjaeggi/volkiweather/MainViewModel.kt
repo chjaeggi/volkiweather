@@ -68,7 +68,7 @@ class MainViewModel(
                     _currentClouds.value = String.format("%.1f %%", it.clouds)
                     _currentOutdoorWind.value = String.format("%.1f km/h", it.wind * 3.6)
                     _currentOutdoorHumidity.value = String.format("%.1f %%", it.humidity)
-                    _weatherIcon.value = R.drawable.ic_clear_night
+                    _weatherIcon.value = it.icon
                 },
                 onError = {
                     Timber.d(it)

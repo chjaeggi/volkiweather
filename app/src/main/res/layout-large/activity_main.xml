@@ -72,10 +72,8 @@
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="@+id/indoor_temperature"
             app:layout_constraintEnd_toEndOf="@+id/current_weather_icon"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/current_weather_icon"
             app:layout_constraintTop_toTopOf="@+id/indoor_temperature"
-            app:layout_constraintVertical_bias="0.0"
             tools:text="23.5 °C" />
 
         <ImageView
