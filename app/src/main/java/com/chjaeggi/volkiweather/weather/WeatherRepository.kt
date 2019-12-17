@@ -49,7 +49,7 @@ class WeatherRepository(
                         (sunrise < currentTime && sunset < currentTime)
             )
             802 -> R.drawable.ic_cloudy
-            803 -> R.drawable.ic_h_cloudy
+            in 803..804 -> R.drawable.ic_h_cloudy
             else -> R.drawable.ic_android
         }
     }
