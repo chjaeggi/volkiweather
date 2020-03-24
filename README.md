@@ -2,7 +2,7 @@
 Android things weather station for my home.
 
 TODO:
-+ Documentation
++ Documentation (DYI instructions)
 + Clean-up and init procedure for Android things (Wi-Fi setup, e.g.)
 + Architecture diagram
 
