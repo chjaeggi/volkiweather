@@ -16,7 +16,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel by viewModel<MainViewModel>()
+    private val viewModel : MainViewModel by viewModel()
     private val intentFilter = IntentFilter()
 
     override fun onCreate(savedInstanceState: Bundle?) {

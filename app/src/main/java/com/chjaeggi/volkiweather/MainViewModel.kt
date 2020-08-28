@@ -3,6 +3,7 @@ package com.chjaeggi.volkiweather
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.chjaeggi.volkiweather.indoor.IndoorDataSource
 import com.chjaeggi.volkiweather.util.AppRxSchedulers
@@ -22,31 +23,31 @@ class MainViewModel(
     RxAwareViewModel() {
 
     private val _dateTime = MutableLiveData<String>()
-    val dateTime = _dateTime
+    val dateTime : LiveData<String> = _dateTime
 
     private val _currentWeatherDescription = MutableLiveData<String>()
-    val currentWeatherDescription = _currentWeatherDescription
+    val currentWeatherDescription : LiveData<String> = _currentWeatherDescription
 
     private val _currentOutdoorTemperature = MutableLiveData<String>()
-    val currentOutdoorTemperature = _currentOutdoorTemperature
+    val currentOutdoorTemperature : LiveData<String> = _currentOutdoorTemperature
 
     private val _currentOutdoorHumidity = MutableLiveData<String>()
-    val currentOutdoorHumidity = _currentOutdoorHumidity
+    val currentOutdoorHumidity : LiveData<String> = _currentOutdoorHumidity
 
     private val _currentOutdoorWind = MutableLiveData<String>()
-    val currentOutdoorWind = _currentOutdoorWind
+    val currentOutdoorWind : LiveData<String> = _currentOutdoorWind
 
     private val _currentClouds = MutableLiveData<String>()
-    val currentClouds = _currentClouds
+    val currentClouds : LiveData<String> = _currentClouds
 
     private val _currentIndoorTemperature = MutableLiveData<String>()
-    val currentIndoorTemperature = _currentIndoorTemperature
+    val currentIndoorTemperature : LiveData<String> = _currentIndoorTemperature
 
     private val _currentIndoorHumidity = MutableLiveData<String>()
-    val currentIndoorHumidity = _currentIndoorHumidity
+    val currentIndoorHumidity : LiveData<String> = _currentIndoorHumidity
 
     private val _weatherIcon = MutableLiveData<Int>()
-    val weatherIcon = _weatherIcon
+    val weatherIcon : LiveData<Int> = _weatherIcon
 
     private var _lowPassTemperature = 0.0f
     private var _lowPassHumidity = 0.0f

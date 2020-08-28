@@ -7,8 +7,9 @@ import com.chjaeggi.volkiweather.weather.WeatherDataSource
 import com.chjaeggi.volkiweather.weather.WeatherRepository
 import com.chjaeggi.volkiweather.util.AppRxSchedulers
 import org.koin.android.ext.koin.androidContext
-import org.koin.android.viewmodel.ext.koin.viewModel
-import org.koin.dsl.module.module
+import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.dsl.module
+
 
 val appModule = module(override = true) {
 

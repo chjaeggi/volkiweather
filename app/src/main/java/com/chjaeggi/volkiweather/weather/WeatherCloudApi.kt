@@ -15,7 +15,7 @@ interface WeatherCloudApi {
         private const val DATA_PATH = "data/2.5/weather"
         private const val APP_KEY_PARAM = "appid=${BuildConfig.WeatherApiKey}"
         private const val WEATHER_QUERY = "q=volketswil"
-        private const val UNITS = "units=metric "
+        private const val UNITS = "units=metric"
 
         fun newInstance(): WeatherCloudApi {
             return Retrofit.Builder()
