@@ -12,7 +12,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "WeatherApiKey", "\"a52a8eef9ed6560d2999b2e6ce5dc47d\""
+        buildConfigField "String", "WeatherApiKey", "\"42260777afe6adb1320d99ba3d3a2d97\""
     }
     buildTypes {
         release {

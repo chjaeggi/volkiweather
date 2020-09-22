@@ -49,6 +49,9 @@ class MainViewModel(
     private val _weatherIcon = MutableLiveData<Int>()
     val weatherIcon : LiveData<Int> = _weatherIcon
 
+    private val _nightMode = MutableLiveData(false)
+    val nightMode : LiveData<Boolean> = _nightMode
+
     private var _lowPassTemperature = 0.0f
     private var _lowPassHumidity = 0.0f
     private val _temperatureSmoothing = 40
@@ -79,6 +82,10 @@ class MainViewModel(
 
     fun startIndoorSensing() {
         indoor.start(_temperatureListener, _humidityListener)
+    }
+
+    fun toggleNightMode() {
+        _nightMode.value = _nightMode.value?.not()
     }
 
     override fun onCleared() {

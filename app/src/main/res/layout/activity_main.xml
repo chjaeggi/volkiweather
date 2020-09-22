@@ -12,9 +12,11 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
+        android:foreground="@{model.nightMode == true ? @color/offColor : @color/transparent}"
         tools:context=".MainActivity">
 
         <ImageView
