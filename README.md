@@ -10,3 +10,8 @@ TODO:
 
 ## Home screen
 ![VolkiWeather home screen](https://github.com/chjaeggi/volkiweather/blob/master/screenshots/volkiweather-screenshot.png)
+
+-----
+
+## Architecture
+![VolkiWeather home screen](https://github.com/chjaeggi/volkiweather/blob/master/screenshots/achi-diagram.png)

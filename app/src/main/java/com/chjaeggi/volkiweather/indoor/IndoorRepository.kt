@@ -24,12 +24,12 @@ class IndoorRepository(private val context: Context) : IndoorDataSource {
         mSensorManager.registerDynamicSensorCallback(object :
             SensorManager.DynamicSensorCallback() {
             override fun onDynamicSensorConnected(sensor: Sensor) {
-                when {
-                    sensor.type == Sensor.TYPE_AMBIENT_TEMPERATURE -> mSensorManager.registerListener(
+                when (sensor.type) {
+                    Sensor.TYPE_AMBIENT_TEMPERATURE -> mSensorManager.registerListener(
                         temperatureListener, sensor,
                         SensorManager.SENSOR_DELAY_NORMAL
                     )
-                    sensor.type == Sensor.TYPE_RELATIVE_HUMIDITY -> mSensorManager.registerListener(
+                    Sensor.TYPE_RELATIVE_HUMIDITY -> mSensorManager.registerListener(
                         humidityListener, sensor,
                         SensorManager.SENSOR_DELAY_NORMAL
                     )
