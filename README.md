@@ -14,4 +14,4 @@ TODO:
 -----
 
 ## Architecture
-![VolkiWeather home screen](https://github.com/chjaeggi/volkiweather/blob/master/screenshots/achi-diagram.png)
+![VolkiWeather Architecture Diagram](https://github.com/chjaeggi/volkiweather/blob/master/screenshots/arch-diagram.png)
